@@ -1,0 +1,38 @@
+name: mysql_db
+
+services:
+
+  mysql:
+    image: mysql
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: my_base
+      MYSQL_ROOT_PASSWORD: my_password
+    networks:
+      - mysql-network
+    volumes:
+      - polls_mysql_data:/mysql
+    
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: my_password
+    networks:
+      - mysql-network
+    volumes:
+      - polls_phpmyadmin_data:/phpmyadmin
+    depends_on:
+      - mysql
+
+networks:
+  mysql-network:
+    driver: bridge
+
+volumes:
+  polls_mysql_data:
+  polls_phpmyadmin_data:
