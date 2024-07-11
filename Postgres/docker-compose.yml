@@ -3,6 +3,7 @@ name: postgres_db
 services:
 
   postgres:
+    container_name: postgres
     image: postgres
     ports:
       - '5432:5432'
@@ -15,6 +16,7 @@ services:
       - polls_pg_data:/postgres
     
   pgadmin:
+    container_name: pgadmin4
     image: dpage/pgadmin4
     ports:
       - '15432:80'
