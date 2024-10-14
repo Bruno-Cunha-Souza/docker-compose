@@ -33,3 +33,7 @@ services:
 networks:
   mongodb-network:
     driver: bridge
+
+volumes:
+  polls_mongodb_data:
+  polls_mongo_express_data:
