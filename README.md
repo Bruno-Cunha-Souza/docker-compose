@@ -20,6 +20,12 @@ docker compose up -d
 docker compose down
 ```
 
+### Parar todos os containers
+
+```
+docker stop $(docker ps -q)
+```
+
 ### Limpar containers, networks, images e cache
 
 ```
